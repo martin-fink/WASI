@@ -71,7 +71,7 @@ impl Type {
             Type::Variant(s) => s.mem_size_align(),
             Type::Handle(h) => h.mem_size_align(),
             Type::List { .. } => SizeAlign { size: 8, align: 4 }, // Pointer and Length
-            Type::Pointer { .. } | Type::ConstPointer { .. } => BuiltinType::S32.mem_size_align(),
+            Type::Pointer { .. } | Type::ConstPointer { .. } => BuiltinType::S64.mem_size_align(),
             Type::Builtin(b) => b.mem_size_align(),
         }
     }

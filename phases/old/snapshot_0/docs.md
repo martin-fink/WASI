@@ -461,9 +461,9 @@ Alignment: 4
 ## <a href="#iovec" name="iovec"></a> `iovec`: `Record`
 A region of memory for scatter/gather reads.
 
-Size: 8
+Size: 16
 
-Alignment: 4
+Alignment: 8
 
 ### Record members
 - <a href="#iovec.buf" name="iovec.buf"></a> `buf`: `Pointer<u8>`
@@ -474,14 +474,14 @@ Offset: 0
 - <a href="#iovec.buf_len" name="iovec.buf_len"></a> `buf_len`: [`size`](#size)
 The length of the buffer to be filled.
 
-Offset: 4
+Offset: 8
 
 ## <a href="#ciovec" name="ciovec"></a> `ciovec`: `Record`
 A region of memory for scatter/gather writes.
 
-Size: 8
+Size: 16
 
-Alignment: 4
+Alignment: 8
 
 ### Record members
 - <a href="#ciovec.buf" name="ciovec.buf"></a> `buf`: `ConstPointer<u8>`
@@ -492,7 +492,7 @@ Offset: 0
 - <a href="#ciovec.buf_len" name="ciovec.buf_len"></a> `buf_len`: [`size`](#size)
 The length of the buffer to be written.
 
-Offset: 4
+Offset: 8
 
 ## <a href="#iovec_array" name="iovec_array"></a> `iovec_array`: `List<iovec>`
 
