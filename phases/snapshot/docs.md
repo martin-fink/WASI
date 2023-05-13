@@ -1,9 +1,9 @@
 # Types
-## <a href="#size" name="size"></a> `size`: `u32`
+## <a href="#size" name="size"></a> `size`: `u64`
 
-Size: 4
+Size: 8
 
-Alignment: 4
+Alignment: 8
 
 ## <a href="#filesize" name="filesize"></a> `filesize`: `u64`
 Non-negative file size or length of a region within a file.
@@ -1238,9 +1238,9 @@ A pre-opened directory.
 ## <a href="#prestat_dir" name="prestat_dir"></a> `prestat_dir`: `Record`
 The contents of a $prestat when type is [`preopentype::dir`](#preopentype.dir).
 
-Size: 4
+Size: 8
 
-Alignment: 4
+Alignment: 8
 
 ### Record members
 - <a href="#prestat_dir.pr_name_len" name="prestat_dir.pr_name_len"></a> `pr_name_len`: [`size`](#size)
@@ -1251,13 +1251,13 @@ Offset: 0
 ## <a href="#prestat" name="prestat"></a> `prestat`: `Variant`
 Information about a pre-opened capability.
 
-Size: 8
+Size: 16
 
-Alignment: 4
+Alignment: 8
 
 ### Variant Layout
-- size: 8
-- align: 4
+- size: 16
+- align: 8
 - tag_size: 1
 ### Variant cases
 - <a href="#prestat.dir" name="prestat.dir"></a> `dir`: [`prestat_dir`](#prestat_dir)
@@ -1305,8 +1305,8 @@ Returns the number of arguments and the size of the argument string
 data, or an error.
 
 ###### Variant Layout
-- size: 12
-- align: 4
+- size: 24
+- align: 8
 - tag_size: 4
 ###### Variant cases
 - <a href="#args_sizes_get.error.ok" name="args_sizes_get.error.ok"></a> `ok`: `(size, size)`
@@ -1318,7 +1318,7 @@ Offset: 0
 
 - <a href="#args_sizes_get.error.ok.1" name="args_sizes_get.error.ok.1"></a> `1`: [`size`](#size)
 
-Offset: 4
+Offset: 8
 
 - <a href="#args_sizes_get.error.err" name="args_sizes_get.error.err"></a> `err`: [`errno`](#errno)
 
@@ -1360,8 +1360,8 @@ Returns the number of environment variable arguments and the size of the
 environment variable data.
 
 ###### Variant Layout
-- size: 12
-- align: 4
+- size: 24
+- align: 8
 - tag_size: 4
 ###### Variant cases
 - <a href="#environ_sizes_get.error.ok" name="environ_sizes_get.error.ok"></a> `ok`: `(size, size)`
@@ -1373,7 +1373,7 @@ Offset: 0
 
 - <a href="#environ_sizes_get.error.ok.1" name="environ_sizes_get.error.ok.1"></a> `1`: [`size`](#size)
 
-Offset: 4
+Offset: 8
 
 - <a href="#environ_sizes_get.error.err" name="environ_sizes_get.error.err"></a> `err`: [`errno`](#errno)
 
@@ -1707,8 +1707,8 @@ The offset within the file at which to read.
 The number of bytes read.
 
 ###### Variant Layout
-- size: 8
-- align: 4
+- size: 16
+- align: 8
 - tag_size: 4
 ###### Variant cases
 - <a href="#fd_pread.error.ok" name="fd_pread.error.ok"></a> `ok`: [`size`](#size)
@@ -1729,8 +1729,8 @@ Return a description of the given preopened file descriptor.
 The buffer where the description is stored.
 
 ###### Variant Layout
-- size: 12
-- align: 4
+- size: 24
+- align: 8
 - tag_size: 4
 ###### Variant cases
 - <a href="#fd_prestat_get.error.ok" name="fd_prestat_get.error.ok"></a> `ok`: [`prestat`](#prestat)
@@ -1784,8 +1784,8 @@ The offset within the file at which to write.
 The number of bytes written.
 
 ###### Variant Layout
-- size: 8
-- align: 4
+- size: 16
+- align: 8
 - tag_size: 4
 ###### Variant cases
 - <a href="#fd_pwrite.error.ok" name="fd_pwrite.error.ok"></a> `ok`: [`size`](#size)
@@ -1810,8 +1810,8 @@ List of scatter/gather vectors to which to store data.
 The number of bytes read.
 
 ###### Variant Layout
-- size: 8
-- align: 4
+- size: 16
+- align: 8
 - tag_size: 4
 ###### Variant cases
 - <a href="#fd_read.error.ok" name="fd_read.error.ok"></a> `ok`: [`size`](#size)
@@ -1848,8 +1848,8 @@ The location within the directory to start reading
 The number of bytes stored in the read buffer. If less than the size of the read buffer, the end of the directory has been reached.
 
 ###### Variant Layout
-- size: 8
-- align: 4
+- size: 16
+- align: 8
 - tag_size: 4
 ###### Variant cases
 - <a href="#fd_readdir.error.ok" name="fd_readdir.error.ok"></a> `ok`: [`size`](#size)
@@ -1978,8 +1978,8 @@ List of scatter/gather vectors from which to retrieve data.
 - <a href="#fd_write.error" name="fd_write.error"></a> `error`: `Result<size, errno>`
 
 ###### Variant Layout
-- size: 8
-- align: 4
+- size: 16
+- align: 8
 - tag_size: 4
 ###### Variant cases
 - <a href="#fd_write.error.ok" name="fd_write.error.ok"></a> `ok`: [`size`](#size)
@@ -2185,8 +2185,8 @@ The buffer to which to write the contents of the symbolic link.
 The number of bytes placed in the buffer.
 
 ###### Variant Layout
-- size: 8
-- align: 4
+- size: 16
+- align: 8
 - tag_size: 4
 ###### Variant cases
 - <a href="#path_readlink.error.ok" name="path_readlink.error.ok"></a> `ok`: [`size`](#size)
@@ -2325,8 +2325,8 @@ Both the number of subscriptions and events.
 The number of events stored.
 
 ###### Variant Layout
-- size: 8
-- align: 4
+- size: 16
+- align: 8
 - tag_size: 4
 ###### Variant cases
 - <a href="#poll_oneoff.error.ok" name="poll_oneoff.error.ok"></a> `ok`: [`size`](#size)
@@ -2467,8 +2467,8 @@ Message flags.
 Number of bytes stored in ri_data and message flags.
 
 ###### Variant Layout
-- size: 12
-- align: 4
+- size: 24
+- align: 8
 - tag_size: 4
 ###### Variant cases
 - <a href="#sock_recv.error.ok" name="sock_recv.error.ok"></a> `ok`: `(size, roflags)`
@@ -2480,7 +2480,7 @@ Offset: 0
 
 - <a href="#sock_recv.error.ok.1" name="sock_recv.error.ok.1"></a> `1`: [`roflags`](#roflags)
 
-Offset: 4
+Offset: 8
 
 - <a href="#sock_recv.error.err" name="sock_recv.error.err"></a> `err`: [`errno`](#errno)
 
@@ -2506,8 +2506,8 @@ Message flags.
 Number of bytes transmitted.
 
 ###### Variant Layout
-- size: 8
-- align: 4
+- size: 16
+- align: 8
 - tag_size: 4
 ###### Variant cases
 - <a href="#sock_send.error.ok" name="sock_send.error.ok"></a> `ok`: [`size`](#size)
